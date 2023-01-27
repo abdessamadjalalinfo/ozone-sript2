@@ -38,11 +38,7 @@ drive = GoogleDrive(gauth)
 gs = gc.open_by_key("189PDYXSLaMLyqmfg6lDAs-PjW6OfB8hsqIptk8oh8mY")
 # select a work sheet from its name
 worksheet1 = gs.worksheet('Sheet1')
-
-
-
 def product(url):
-    
     attributes={}
     response=requests.get(url)
     soup=BeautifulSoup(response.text)
@@ -66,13 +62,11 @@ def product(url):
                     value=str(element.span.a.contents[0]).replace("\n","").replace("   ","").replace("\t",'').replace(',',"")
                 else:
                     value=str(element.span.contents[0]).replace("\n","").replace("   ","").replace("\t",'').replace(',',"")
-                #print(key,":",value)
                 attributes[key]=value
             except:
                 pass
     except:
         pass
-    #pricing
     try:
         products_option=soup.find("div",{"class":"product-options"})
         try:
@@ -119,7 +113,6 @@ def product(url):
     except:
         attributes["image"]="image"
     return attributes
-
 def product_in_categorie(url):
     url=url+"?disponibil=in-depozit&limit=100"
     print(url)
@@ -139,17 +132,57 @@ def product_in_categorie(url):
     gd.set_with_dataframe(ws, updated)
 
 def func():
+  try:
     product_in_categorie("https://www.ozone.ro/puzzle-uri/")
+  except:
+    pass
+  try:
     product_in_categorie("https://www.ozone.ro/jocuri-pentru-computere-si-console/")
+  except:
+    pass
+  try:
     product_in_categorie("https://www.ozone.ro/accesorii-de-gaming/")
-    product_in_categorie("https://www.ozone.ro/librarie/")
-    product_in_categorie("https://www.ozone.ro/tv-monitori/")
-    product_in_categorie("https://www.ozone.ro/filme-muzica/")
-    product_in_categorie("https://www.ozone.ro/audio-si-hi-fi")
-    product_in_categorie("https://www.ozone.ro/merchandising")
-    product_in_categorie("https://www.ozone.ro/jocuri-de-masa-101")
-    product_in_categorie("https://www.ozone.ro/jucarii")
-    product_in_categorie("https://www.ozone.ro/mama-si-bebe")
-    product_in_categorie("https://www.ozone.ro/aparate-electrice-mici")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/librarie/")
+  except:
+    pass 
+  try:
+   product_in_categorie("https://www.ozone.ro/librarie/")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/tv-monitori/")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/filme-muzica/")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/audio-si-hi-fi")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/merchandising")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/jocuri-de-masa-101")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/jucarii")
+  except:
+    pass
+  try:
+   product_in_categorie("https://www.ozone.ro/mama-si-bebe")
+  except:
+    pass  
+  try:
+   product_in_categorie("https://www.ozone.ro/aparate-electrice-mici")
+  except:
+    pass  
 
 func()
